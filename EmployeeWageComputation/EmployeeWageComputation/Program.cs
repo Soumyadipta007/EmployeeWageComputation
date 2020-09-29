@@ -4,13 +4,10 @@ namespace EmployeeWageComputation
 {
     class Program
     {
-        const int EMP_RATE_PER_HOUR = 20;
-        const int TOTAL_HOURS = 100;
-        const int TOTAL_DAYS = 20;
         const int FULLTIME = 1;
         const int PARTTIME = 2;
         const int ABSENT = 0;
-        public static void computeEmpWage()
+        public static void computeEmpWage(string company,int EMP_RATE_PER_HOUR,int totalHours, int totalDays)
         {
             int countOfHours = 0;
             int countOfDays = 0;
@@ -18,7 +15,7 @@ namespace EmployeeWageComputation
             Random random = new Random();
             int isFullOrPartTime;
             int empHours = 0;
-            while (countOfHours <= TOTAL_HOURS && countOfDays < TOTAL_DAYS)
+            while (countOfHours <= totalHours && countOfDays < totalDays)
             {
                 isFullOrPartTime = random.Next(0, 3);
                 switch (isFullOrPartTime)
@@ -37,11 +34,12 @@ namespace EmployeeWageComputation
                 countOfHours += empHours;
                 countOfDays += 1;
             }
-            Console.WriteLine("Employee total Wage: " + totalWage);
+            Console.WriteLine("Total Employee Wage for company " +company+" :"+ totalWage);
         }
         static void Main(string[] args)
         {
-            computeEmpWage();            
+            computeEmpWage("Dmart",20,100,20);
+            computeEmpWage("Reliance", 20, 200, 30);
         }
     }
 }
