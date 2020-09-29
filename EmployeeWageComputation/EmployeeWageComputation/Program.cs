@@ -6,16 +6,19 @@ namespace EmployeeWageComputation
     {
         static void Main(string[] args)
         {
-            Random random = new Random();
             int isFullOrPartTime;
             int empHours = 0;
-            const int empRatePerHour = 20;
+            const int EMP_RATE_PER_HOUR = 20;
+            const int TOTAL_HOURS = 100;
+            const int TOTAL_DAYS = 20;
             const int FULLTIME = 1;
             const int PARTTIME = 2;
             const int ABSENT = 0;
-            int dailyWage = 0;
-            int monthlyWage = 0;
-            for (int i = 0; i <= 20; i++)
+            int countOfHours = 0;
+            int countOfDays = 0;
+            int totalWage = 0;
+            Random random = new Random();
+            while (countOfHours <= TOTAL_HOURS && countOfDays < TOTAL_DAYS)
             {
                 isFullOrPartTime = random.Next(0, 3);
                 switch (isFullOrPartTime)
@@ -30,10 +33,11 @@ namespace EmployeeWageComputation
                         empHours = 0;
                         break;
                 }
-                dailyWage = empHours * empRatePerHour;
-                monthlyWage += dailyWage;
+                totalWage = totalWage + (empHours * EMP_RATE_PER_HOUR);
+                countOfHours += empHours;
+                countOfDays += 1;
             }
-            Console.WriteLine("Employee Monthly Wage: " + monthlyWage);
+            Console.WriteLine("Employee total Wage: " + totalWage);
         }
     }
 }
