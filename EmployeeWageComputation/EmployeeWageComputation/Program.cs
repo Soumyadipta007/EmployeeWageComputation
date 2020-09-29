@@ -9,12 +9,10 @@ namespace EmployeeWageComputation
         const int ABSENT = 0;
         static void Main(string[] args)
         {
-            EmpWageBuilderObject dmart = new EmpWageBuilderObject("Dmart",20,100,20);
-            EmpWageBuilderObject Reliance = new EmpWageBuilderObject("Reliance", 20, 200, 30);
-            dmart.computeEmpWage();
-            dmart.toString();
-            Reliance.computeEmpWage();
-            Reliance.toString();
+            EmpWageBuilderArray empWageBuilder = new EmpWageBuilderArray();
+            empWageBuilder.addCompanyEmpWage("Dmart", 20, 100, 20);
+            empWageBuilder.addCompanyEmpWage("Reliance", 20, 200, 30);
+            empWageBuilder.computeEmpWage();
         }
     }
 }
