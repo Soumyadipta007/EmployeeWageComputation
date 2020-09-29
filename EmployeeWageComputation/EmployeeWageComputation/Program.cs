@@ -6,41 +6,34 @@ namespace EmployeeWageComputation
     {
         static void Main(string[] args)
         {
-            int empWage;
-            const int empRatePerHour = 20;
             Random random = new Random();
-            int empCheck = random.Next(0, 2);
-            int empHours = getEmpHours(empCheck);
-            empWage = empHours * empRatePerHour;
-            Console.WriteLine("Employee Wage : " + empWage);
-        }
-        public static int getEmpHours(int empCheck)
-        {
+            int isFullOrPartTime;
             int empHours = 0;
+            const int empRatePerHour = 20;
             const int FULLTIME = 1;
-            const int PARTTIME = 0;
-            const int PRESENT = 1;
+            const int PARTTIME = 2;
             const int ABSENT = 0;
-            Random random = new Random();
-            switch (empCheck)
+            int dailyWage = 0;
+            int monthlyWage = 0;
+            for (int i = 0; i <= 20; i++)
             {
-                case PRESENT:
-                    int isFullOrPartTime = random.Next(0, 2);
-                    switch (isFullOrPartTime)
-                    {
-                        case FULLTIME:
-                            empHours = 8;
-                            break;
-                        case PARTTIME:
-                            empHours = 4;
-                            break;
-                    }
-                    break;
-                case ABSENT:
-                    empHours = 0;
-                    break;
+                isFullOrPartTime = random.Next(0, 3);
+                switch (isFullOrPartTime)
+                {
+                    case FULLTIME:
+                        empHours = 8;
+                        break;
+                    case PARTTIME:
+                        empHours = 4;
+                        break;
+                    case ABSENT:
+                        empHours = 0;
+                        break;
+                }
+                dailyWage = empHours * empRatePerHour;
+                monthlyWage += dailyWage;
             }
-            return empHours;
+            Console.WriteLine("Employee Monthly Wage: " + monthlyWage);
         }
     }
 }
